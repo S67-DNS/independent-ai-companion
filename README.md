@@ -37,7 +37,7 @@ cd modules/ui/local-window && LOCAL_WINDOW_TRANSPORT=mock node server.mjs
 
 - 本仓库不声称全部内容由单一权利人拥有。逐文件的来源分类、第三方许可证情况与处置结果见 [`PUBLIC-ASSET-MANIFEST.csv`](./PUBLIC-ASSET-MANIFEST.csv)。
 - 来源无法确认的资产如实标记为「来源未知」，**未**写成自有原创，也未纳入本仓库。
-- 包内不含第三方源码、二进制、字体或素材。第三方项目仅作设计参考，其许可证与版权归各自权利人、各自独立；已核对与仅声明级的许可证事实见 `documentation/LICENSES/THIRD-PARTY-LICENSES.md`。MIT 的版权与许可声明保留要求、Apache-2.0 的 NOTICE 与变更说明要求，均不因本仓库的公开范围而改变。
+- 在本轮检查范围和已知特征下，未发现可识别的第三方实体内容。该结论不等于证明所有文件均不存在第三方来源。第三方项目仅作设计参考，其许可证与版权归各自权利人、各自独立；已核对与仅声明级的许可证事实见 `documentation/LICENSES/THIRD-PARTY-LICENSES.md`。MIT 的版权与许可声明保留要求、Apache-2.0 的 NOTICE 与变更说明要求，均不因本仓库的公开范围而改变。
 - 某一上游单文件聊天应用因再分发权无法坐实，其内嵌源码、适配层与相关测试已整体排除。
 
 ## 未公开内容
