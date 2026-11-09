@@ -1,0 +1,15 @@
+{
+  "name": "opencore-core-sidecar",
+  "version": "0.3.0-r1",
+  "private": true,
+  "type": "module",
+  "description": "Verified D1-R1 / PHASE 0-5 core sidecar; deployed but not started",
+  "scripts": {
+    "start": "node app/host/core-host.mjs",
+    "check": "node --check app/host/core-host.mjs"
+  },
+  "dependencies": {
+    "argparse": "2.0.1",
+    "js-yaml": "4.1.0"
+  }
+}

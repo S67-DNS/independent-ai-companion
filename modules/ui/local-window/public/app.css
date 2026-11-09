@@ -1,0 +1,252 @@
+:root {
+  --blue: #2f6fed;
+  --blue-deep: #2559c9;
+  --blue-soft: #eef4ff;
+  --ink: #1d2433;
+  --ink-soft: #5b6577;
+  --ink-faint: #8a94a6;
+  --line: #e7ecf5;
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --radius: 20px;
+  --shadow: 0 24px 60px -32px rgba(31, 51, 92, 0.28), 0 2px 8px -2px rgba(31, 51, 92, 0.06);
+  font-family: "Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 24px;
+  background:
+    radial-gradient(1200px 420px at 50% -160px, #eaf1ff 0%, rgba(234, 241, 255, 0) 70%),
+    var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell {
+  height: calc(100vh - 48px);
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---------- 顶栏 ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #fbfcff 0%, #ffffff 100%);
+}
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-soft);
+  flex: none;
+}
+.brand-text h1 { margin: 0; font-size: 15px; font-weight: 650; letter-spacing: 0.2px; }
+.brand-text p { margin: 2px 0 0; font-size: 11.5px; color: var(--ink-faint); letter-spacing: 0.3px; }
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.badge {
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: #f3f6fb;
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 12px;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease, transform 0.06s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-ghost {
+  background: #fff;
+  color: var(--ink-soft);
+  border-color: var(--line);
+  padding: 8px 12px;
+  font-size: 12.5px;
+}
+.btn-ghost:hover { color: var(--blue); border-color: #cfdcf7; background: #f9fbff; }
+.btn-send {
+  background: var(--blue);
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px -8px rgba(47, 111, 237, 0.7);
+  flex: none;
+}
+.btn-send:hover { background: var(--blue-deep); }
+.btn-send:disabled { background: #b9c7e4; box-shadow: none; cursor: default; }
+
+/* ---------- 消息区 ---------- */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 26px 28px 10px;
+  scroll-behavior: smooth;
+}
+.messages::-webkit-scrollbar { width: 8px; }
+.messages::-webkit-scrollbar-thumb { background: #e2e8f2; border-radius: 8px; }
+
+.row { display: flex; margin: 0 0 18px; }
+.row.user { justify-content: flex-end; }
+.row.assistant { justify-content: flex-start; }
+.bubble-wrap { max-width: min(76%, 620px); display: flex; flex-direction: column; gap: 6px; }
+.row.user .bubble-wrap { align-items: flex-end; }
+.bubble {
+  padding: 11px 15px;
+  font-size: 14.5px;
+  line-height: 1.62;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.row.user .bubble {
+  background: linear-gradient(180deg, var(--blue) 0%, var(--blue-deep) 100%);
+  color: #fff;
+  border-radius: 17px 17px 5px 17px;
+}
+.row.assistant .bubble {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 17px 17px 17px 5px;
+  box-shadow: 0 1px 2px rgba(29, 36, 51, 0.03);
+}
+.bubble.failed { border-color: #f2c7c7; background: #fff7f7; }
+.row.user .bubble.failed { background: #d9534f; }
+.meta { font-size: 11px; color: var(--ink-faint); padding: 0 4px; }
+.bubble-attachments { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.bubble-attachments:first-child { margin-top: 0; }
+.bubble-attachments img { max-width: 100%; max-height: 280px; border-radius: 12px; display: block; background: #f0f3f9; }
+.bubble-attachments audio, .bubble-attachments video { width: 100%; max-width: 320px; border-radius: 10px; }
+.file-chip {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--ink-soft);
+  background: #f5f8fd; border: 1px solid var(--line);
+  border-radius: 10px; padding: 7px 10px;
+}
+.row.user .file-chip { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.24); color: #eaf0ff; }
+.file-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex: none; }
+.row.user .file-chip .dot { background: #cfe0ff; }
+
+.empty {
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 8px; color: var(--ink-soft);
+  padding-bottom: 40px;
+}
+.empty-mark {
+  width: 46px; height: 46px; border-radius: 16px;
+  border: 1px solid #dbe6fb;
+  background: radial-gradient(circle at 30% 30%, #ffffff, var(--blue-soft));
+  box-shadow: 0 10px 24px -16px rgba(47, 111, 237, 0.55);
+  margin-bottom: 6px;
+}
+.empty h2 { margin: 0; font-size: 15px; font-weight: 620; color: var(--ink); }
+.empty p { margin: 0; font-size: 12.5px; color: var(--ink-faint); }
+
+.typing { display: inline-flex; gap: 4px; align-items: center; }
+.typing i { width: 5px; height: 5px; border-radius: 50%; background: #a9b6cd; animation: blink 1.2s infinite ease-in-out; }
+.typing i:nth-child(2) { animation-delay: 0.15s; }
+.typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+
+/* ---------- 输入区 ---------- */
+.composer {
+  border-top: 1px solid var(--line);
+  padding: 14px 20px 16px;
+  background: #fff;
+}
+.pending { display: flex; flex-wrap: wrap; gap: 8px; padding: 2px 2px 10px; }
+.pending-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  max-width: 260px;
+  background: #f5f8fd; border: 1px solid var(--line);
+  border-radius: 10px; padding: 6px 9px;
+  font-size: 11.5px; color: var(--ink-soft);
+}
+.pending-chip .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pending-chip button {
+  appearance: none; border: 0; background: transparent; color: var(--ink-faint);
+  cursor: pointer; font-size: 14px; line-height: 1; padding: 0 2px;
+}
+.pending-chip button:hover { color: #d9534f; }
+
+.composer-row {
+  display: flex; align-items: flex-end; gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 8px 8px 8px 10px;
+  background: #fbfcfe;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+.composer-row:focus-within { border-color: #c3d5f8; box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.08); background: #fff; }
+.icon-btn {
+  width: 34px; height: 34px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 10px; color: var(--ink-faint); cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.icon-btn:hover { background: #eef3fc; color: var(--blue); }
+#input {
+  flex: 1; min-height: 24px; max-height: 168px;
+  resize: none; border: 0; outline: none; padding: 6px 2px;
+  font: inherit; font-size: 14.5px; line-height: 1.55;
+  color: var(--ink); background: transparent;
+}
+#input::placeholder { color: #9aa4b6; }
+.composer-hint {
+  margin: 8px 4px 0;
+  font-size: 11px; color: var(--ink-faint); text-align: right;
+}
+
+/* ---------- toast ---------- */
+.toast {
+  position: fixed; left: 50%; top: 22px; transform: translateX(-50%);
+  max-width: min(680px, calc(100vw - 40px));
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #f0d3d3;
+  color: #a13b3b;
+  font-size: 12.5px; line-height: 1.5;
+  box-shadow: 0 16px 40px -24px rgba(60, 30, 30, 0.5);
+  z-index: 20;
+}
+.toast.info { border-color: #d7e3f8; color: #2b4c86; }
+
+@media (max-width: 640px) {
+  body { padding: 10px; }
+  .shell { height: calc(100vh - 20px); border-radius: 16px; }
+  .topbar { padding: 16px 18px; }
+  .messages { padding: 20px 16px 6px; }
+  .bubble-wrap { max-width: 88%; }
+  .composer { padding: 12px 12px 14px; }
+  .badge { display: none; }
+}

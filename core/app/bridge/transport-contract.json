@@ -1,0 +1,10 @@
+{
+  "bridge": "SnowLuma-OneBot-v11",
+  "version": "2.4.2",
+  "http": { "host": "127.0.0.1", "port": 3000, "purpose": "send", "enabledForSend": false },
+  "ws": { "host": "127.0.0.1", "port": 3001, "purpose": "receive", "consumer": "none", "activeClientsMustBe": 0 },
+  "identity": { "botUin": "20000002", "ownerUin": "20000001", "adminPrivateOnly": true },
+  "outbound": { "state": "DISABLED", "requiresCommander": true, "dispatch": false },
+  "inbound": { "state": "ISOLATED", "host": "not running", "gatewayAdapter": "guarded/not connected", "persona": "DISABLED" },
+  "note": "No message may enter a persona/session path in this phase."
+}

@@ -1,0 +1,17 @@
+{
+  "transport": "mock",
+  "dataDir": "./data",
+  "listen": { "port": 8790 },
+  "model": {
+    "name": "mock-model",
+    "maxContextTokens": 128000
+  },
+  "openai": {
+    "baseURL": "",
+    "model": "",
+    "apiKey": "",
+    "timeoutMs": 120000,
+    "maxContextTokens": 128000,
+    "supports": { "image": false, "audio": false, "video": false }
+  }
+}
